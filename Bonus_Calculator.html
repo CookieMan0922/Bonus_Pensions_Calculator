@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus and Pension Calculator</title>
+    <script>
+        function calculate() {
+            // Get the values from the input fields
+            var bonus = parseFloat(document.getElementById('bonus').value) || 0;
+            var percentage = parseFloat(document.getElementById('percentage').value) || 0;
+
+            // Calculate the pension contribution and the taxable bonus
+            var pensionContribution = (bonus * (percentage / 100)).toFixed(2);
+            var taxableBonus = (bonus - pensionContribution).toFixed(2);
+
+            // Set the calculated values in the respective fields
+            document.getElementById('pension').value = pensionContribution;
+            document.getElementById('taxableBonus').value = taxableBonus;
+        }
+    </script>
+</head>
+<body>
+    <h2>Bonus and Pension Calculator</h2>
+    <form>
+        <div>
+            <label for="bonus">Cash Element of Bonus being paid:</label>
+            <input type="number" id="bonus" name="bonus" oninput="calculate()" placeholder="Enter amount" step="0.01">
+        </div>
+        <br>
+        <div>
+            <label for="percentage">Percentage of Pension you would like to contribute:</label>
+            <input type="number" id="percentage" name="percentage" oninput="calculate()" placeholder="Enter percentage" step="0.01">
+        </div>
+        <br>
+        <div>
+            <label for="pension">Calculated Amount of Pension Contribution:</label>
+            <input type="number" id="pension" name="pension" readonly>
+        </div>
+        <br>
+        <div>
+            <label for="taxableBonus">Calculated Amount of Bonus subject to Tax and NI:</label>
+            <input type="number" id="taxableBonus" name="taxableBonus" readonly>
+        </div>
+    </form>
+</body>
+</html>
